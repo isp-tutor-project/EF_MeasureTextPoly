@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Standalone javascript rich text editor entirely based on HTML5 canvas">
+    <meta name="keywords" content="Rich Text Editor, JavaScript, Canvas, HTML5">
+    <title>RichTextJS</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+            background-color: #cdcdcd;
+            font-family: 'Open Sans', serif;
+        }
+        
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        #toolbar {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            right: 10px;
+            overflow: hidden;
+        }
+
+        #editorFrame {
+            position: absolute;
+            top: 40px;
+            width: 50%;
+            left: 0;
+            bottom: 40px;
+        }
+
+        #editorFrame div {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            right: 10px;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        #editorCanvas {
+            outline: none;
+            border: 1px solid black;
+            width: 99%;
+            height: 99%;
+        }
+
+        #rightArea {
+            position: absolute;
+            top: 40px;
+            width: 50%;
+            right: 0;
+            bottom: 40px;
+        }
+
+        #rightArea div {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            right: 10px;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        #rightArea textarea {
+            width: 99%;
+            height: 99%;
+            border: none;
+            background: rgb(30, 30, 30);
+            color: rgb(0, 200, 20);
+        }
+    </style>
+</head>
+
+<body onload="main()">
+
+    <div id="toolbar">
+        <select id="font">
+            <option value="open sans">Open Sans</option>
+            <option value="serif">Times</option>
+            <option value="sans-serif">Helvetica</option>
+            <option value="monospace">Courier</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+        <select id="size">
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option value="14" selected="selected">14</option>
+            <option>16</option>
+            <option>18</option>
+            <option>20</option>
+            <option>24</option>
+            <option>30</option>
+            <option>36</option>
+            <option>72</option>
+        </select>
+        <label>
+            <strong>Bold</strong>
+        </label>
+        <label>
+            <input type="checkbox" id="bold">
+        </label>
+        <label>
+            <i>Italic</i>
+        </label>
+        <label>
+            <input type="checkbox" id="italic">
+        </label>
+        <label>Color</label>
+        <select id="color">
+            <option value="black">Black</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select>
+        <label>List</label>
+        <select id="list">
+            <option value="no-list">None</option>
+            <option value="unordered-list">Unordered</option>
+            <option value="ordered-list">Ordered</option>
+        </select>
+        <label>Links are active</label>
+        <label>
+            <input type="checkbox" id="links" checked=t rue>
+        </label>
+    </div>
+    <div id="editorFrame">
+        <div>
+            <canvas id="editorCanvas" tabindex="1"></canvas>
+        </div>
+    </div>
+
+    <div id="rightArea">
+        <div>
+            <textarea></textarea>
+        </div>
+    </div>
+
+    <script src="dist/mtpoly.js"></script>
+    <script>
+
+        function main() {
+            // ---
+            let defaultFont = {
+                name: "open sans",
+                size: 24,
+                attributes: { bold: false, italic: false },
+                style: 'black',
+                text: "24pt open sans"
+            };
+
+            let tagList = [
+                { name: "h1", size: 30 },
+                { name: "h2", size: 20 },
+                { name: "h3", size: 18 },
+                { name: "h4", size: 16 },
+                { name: "p", size: 14 },
+            ];
+
+            let canvas = document.getElementById('editorCanvas');
+
+            let ctx = canvas.getContext('2d');
+
+            let metric1 = ctx.measureText("This is a test","ext_all");
+            let metric2 = ctx.measureText("This is a test\nof the","ext_all");
+            let metric3 = ctx.measureText("This is a test of the emergency","ext_all");
+            let metric4 = ctx.measureText("This is a test of the emergency broadcast","ext_all");
+            let metric5 = ctx.measureText("This is a test of the emergency broadcast system","ext_all");
+            let metric6 = ctx.measureText("This is a test","ext_all");
+        }
+    </script>
+</body>
+
+</html>

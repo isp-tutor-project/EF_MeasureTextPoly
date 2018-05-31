@@ -1,0 +1,16 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+		"module": "system",
+		"target": "es6",
+		"sourceMap": true,
+        "declaration": true,
+        "outDir": "../dist",
+		// "outFile": "mtpoly.js",        
+		"lib": [ "es2015", "dom" ],	
+        "noImplicitAny": true,
+        "removeComments":true
+    }
+}

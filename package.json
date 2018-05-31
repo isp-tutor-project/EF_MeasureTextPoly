@@ -1,0 +1,19 @@
+{
+  "name": "ef_textmetricpoly",
+  "version": "1.0.0",
+  "description": "Context2D measureText polyfill",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "measureText",
+    "polyfill",
+    "textmetric"
+  ],
+  "author": "Kevin Willows",
+  "license": "MOLICENSE",
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
