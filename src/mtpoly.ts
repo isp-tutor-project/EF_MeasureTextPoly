@@ -55,7 +55,7 @@ class EFMeasureText {
     }
 
 
-    public measureText(text:string, hint?:string) {
+    public measureText(text:string, hint?:string) : TextMetrics {
 
         var metrics  = this._efthis._measureText.call(this,text);
         var textSpan = this._efthis.textSpan;
