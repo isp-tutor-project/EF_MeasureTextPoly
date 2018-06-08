@@ -31,7 +31,7 @@ class EFMeasureText {
         this._measureText = proto.measureText;
         this.createCacheElements();
 
-        proto._efthis      = this;
+        proto._efthis = this;
     }
 
 
